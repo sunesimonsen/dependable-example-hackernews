@@ -1,0 +1,31 @@
+{
+  "type": "module",
+  "private": true,
+  "name": "dependable-example-hackernews",
+  "version": "1.0.0",
+  "description": "Hackernews example using @dependable",
+  "author": "Sune Simonsen",
+  "license": "MIT",
+  "scripts": {
+    "start": "relivestyle --single --port 5000 public",
+    "build": "rm -rf dist && rollup -c node:@dependable/rollup-config",
+    "deploy": "npm run build && surge dist dependable-example-hackernews.surge.sh",
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "@dependable/rollup-config": "^0.4.0",
+    "mocha": "^10.0.0",
+    "relivestyle": "^1.0.0-11",
+    "surge": "^0.23.1",
+    "unexpected": "^13.0.0",
+    "unexpected-dependable": "^1.1.0"
+  },
+  "dependencies": {
+    "@dependable/nano-router": "^0.2.0",
+    "@dependable/state": "^0.8.0",
+    "@dependable/view": "^0.8.3",
+    "@nano-router/history": "^2.11.0",
+    "@nano-router/router": "^2.11.0",
+    "stylewars": "^2.1.0"
+  }
+}

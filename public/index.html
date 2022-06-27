@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+    <head>
+      <base href="/">
+      <title>Hacker News</title>
+      <link rel="icon" href="./favicon.ico" type="image/x-icon">
+      <script type="module" src="./index.js"></script>
+      <style>
+        html,
+        body {
+          margin: 0;
+          padding: 0;
+        }
+
+        body {
+          font-family: Verdana, Geneva, sans-serif;
+          background: #ecece3;
+        }
+
+        main {
+          display: flex;
+          flex-direction: column;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          overflow: hidden;
+        }
+
+        header {
+          display: flex;
+          align-items: center;
+          background: rgb(255, 102, 0);
+          color: white;
+          position: relative;
+          height: 38px;
+        }
+
+        .content {
+          flex: 1;
+          overflow-y: auto;
+          padding: 20px 0;
+        }
+      </style>
+    </head>
+
+    <body>
+      <main>
+        <header class="topBar"></header>
+        <section class="content"></section>
+      </main>
+    </body>
+</html>
