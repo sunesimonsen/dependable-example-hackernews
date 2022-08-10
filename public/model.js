@@ -110,3 +110,5 @@ export const loadMoreVisible = computed(() => topStories().length > shown());
 export const loadMoreStories = () => {
   shown(shown() + pageSize);
 };
+
+export const isHome = computed(() => route() === "home");
