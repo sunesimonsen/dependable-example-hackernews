@@ -39,7 +39,7 @@ const bylineStyles = css`
 
 export class Comment {
   render({ comment, showAnswersLink }) {
-    comment.load();
+    this.context.api.loadComment(comment);
 
     if (comment.status() !== "loaded") {
       return html`

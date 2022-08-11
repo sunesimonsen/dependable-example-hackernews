@@ -1,7 +1,7 @@
 import { html } from "@dependable/view";
 import { css } from "stylewars";
 import { ReloadIcon } from "./icons.js";
-import { storiesStatus, reloadTopStories } from "../state.js";
+import { storiesStatus } from "../state.js";
 
 const reloadStyles = css`
   & {
@@ -43,10 +43,16 @@ const loadingStyles = css`
 `;
 
 export class ReloadButton {
+  constructor() {
+    this.onReload = () => {
+      this.context.api.reloadTopStories();
+    };
+  }
+
   render() {
     return html`
       <button
-        onClick=${reloadTopStories}
+        onClick=${this.onReload}
         className=${reloadStyles}
         title="refresh"
       >

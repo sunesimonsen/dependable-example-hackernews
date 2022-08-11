@@ -16,7 +16,6 @@ export class Story {
     const story = this.props.story;
     if (this.ref && story.isExpanded()) {
       this.ref.scrollIntoView(true);
-      // this.context.router.navigate({ state: null, replace: true });
     }
   }
 
@@ -29,7 +28,7 @@ export class Story {
   }
 
   render({ story }) {
-    story.load();
+    this.context.api.loadStory(story);
 
     if (story.status() !== "loaded") {
       return html`<${StoryPlaceholder} />`;

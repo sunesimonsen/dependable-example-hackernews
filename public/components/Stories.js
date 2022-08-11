@@ -2,7 +2,7 @@ import { html } from "@dependable/view";
 import { css } from "stylewars";
 import { Story } from "./Story.js";
 import { LoadMore } from "./LoadMore.js";
-import { stories, loadTopStories } from "../state.js";
+import { stories } from "../state.js";
 
 const containerStyles = css`
   & {
@@ -24,7 +24,7 @@ const listStyles = css`
 
 export class Stories {
   didMount() {
-    loadTopStories();
+    this.context.api.loadTopStories();
   }
 
   render() {
