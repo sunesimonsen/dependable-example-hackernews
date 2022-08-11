@@ -1,5 +1,5 @@
 import { html } from "@dependable/view";
-import { loadMoreVisible, loadMoreStories } from "../model.js";
+import { loadMoreVisible, loadMoreStories } from "../state.js";
 import { css } from "stylewars";
 
 const buttonsStyles = css`

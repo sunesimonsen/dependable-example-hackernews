@@ -2,7 +2,7 @@ import { html } from "@dependable/view";
 import { css } from "stylewars";
 import { Story } from "./Story.js";
 import { LoadMore } from "./LoadMore.js";
-import { stories, loadTopStories } from "../model.js";
+import { stories, loadTopStories } from "../state.js";
 
 const containerStyles = css`
   & {

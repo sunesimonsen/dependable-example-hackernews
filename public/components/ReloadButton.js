@@ -1,7 +1,7 @@
 import { html } from "@dependable/view";
 import { css } from "stylewars";
 import { ReloadIcon } from "./icons.js";
-import { storiesStatus, reloadTopStories } from "../model.js";
+import { storiesStatus, reloadTopStories } from "../state.js";
 
 const reloadStyles = css`
   & {

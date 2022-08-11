@@ -1,7 +1,7 @@
 import { html } from "@dependable/view";
 import { ReloadButton } from "./ReloadButton.js";
 import { HomeLink } from "./HomeLink.js";
-import { isHome } from "../model.js";
+import { isHome } from "../state.js";
 
 export class TopBar {
   render() {
