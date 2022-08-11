@@ -9,10 +9,6 @@ export const storiesStatus = observable("uninitialized");
 export const topStories = observable([]);
 export const stories = computed(() => topStories().slice(0, shown()));
 
-export const loadMoreVisible = computed(() => topStories().length > shown());
-
-export const loadMoreStories = () => {
-  shown(shown() + pageSize);
-};
+export const isLoadMoreVisible = computed(() => topStories().length > shown());
 
 export const isHome = computed(() => route() === "home");

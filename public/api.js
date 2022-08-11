@@ -91,4 +91,8 @@ export class Api {
     shown(pageSize);
     await this.loadTopStories({ reload: true });
   }
+
+  loadMoreStories() {
+    shown(shown() + pageSize);
+  }
 }

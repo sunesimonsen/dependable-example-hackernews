@@ -1,5 +1,5 @@
 import { html } from "@dependable/view";
-import { loadMoreVisible, loadMoreStories } from "../state.js";
+import { isLoadMoreVisible } from "../state.js";
 import { css } from "stylewars";
 
 const buttonsStyles = css`
@@ -26,12 +26,18 @@ const loadMoreStyles = css`
 `;
 
 export class LoadMore {
+  constructor() {
+    this.onLoadMore = () => {
+      this.context.api.loadMoreStories();
+    };
+  }
+
   render() {
     return (
-      loadMoreVisible() &&
+      isLoadMoreVisible() &&
       html`
         <div className=${buttonsStyles}>
-          <button onClick=${loadMoreStories} className=${loadMoreStyles}>
+          <button onClick=${this.onLoadMore} className=${loadMoreStyles}>
             Load more
           </button>
         </div>
