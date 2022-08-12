@@ -13,8 +13,7 @@ export class Story {
   }
 
   scrollIntoViewIfNecessary() {
-    const story = this.props.story;
-    if (this.ref && story.isExpanded()) {
+    if (this.ref && this.props.isExpanded) {
       this.ref.scrollIntoView(true);
     }
   }
@@ -27,7 +26,7 @@ export class Story {
     this.scrollIntoViewIfNecessary();
   }
 
-  render({ story }) {
+  render({ story, isExpanded }) {
     this.context.api.loadStory(story);
 
     if (story.status() !== "loaded") {
@@ -39,8 +38,8 @@ export class Story {
         <${StoryTitle}>
           <${StoryLink} story=${story} />
         <//>
-        <${StoryByline} story=${story} />
-        ${story.isExpanded() && html`<${Details} story=${story} />`}
+        <${StoryByline} story=${story} showCommentLink=${!isExpanded} />
+        ${isExpanded && html`<${Details} story=${story} />`}
       <//>
     `;
   }

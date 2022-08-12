@@ -13,12 +13,12 @@ const styles = css`
 `;
 
 export class StoryByline {
-  render({ story }) {
+  render({ story, showCommentLink }) {
     return html`
       <div className=${styles}>
         <span>${story.score} points by ${story.by}</span>
         <span>${formatRelativeHours(story.time)}</span>
-        ${!story.isExpanded() && html`<${CommentsLink} story=${story} />`}
+        ${showCommentLink && html`<${CommentsLink} story=${story} />`}
       </div>
     `;
   }

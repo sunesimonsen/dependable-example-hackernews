@@ -3,6 +3,7 @@ import { css } from "stylewars";
 import { Story } from "./Story.js";
 import { LoadMore } from "./LoadMore.js";
 import { stories } from "../state.js";
+import { params } from "@dependable/nano-router";
 
 const containerStyles = css`
   & {
@@ -32,7 +33,12 @@ export class Stories {
       <div className=${containerStyles}>
         <ol className=${listStyles}>
           ${stories().map(
-            (story) => html`<${Story} key=${story} story=${story} />`
+            (story) =>
+              html`<${Story}
+                key=${story}
+                story=${story}
+                isExpanded=${params().id === story.id}
+              />`
           )}
         </ol>
         <${LoadMore} />
