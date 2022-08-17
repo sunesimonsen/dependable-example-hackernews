@@ -15,6 +15,7 @@ export class Story {
   scrollIntoViewIfNecessary() {
     if (this.ref && this.props.isExpanded) {
       this.ref.scrollIntoView(true);
+      document.documentElement.scrollBy(0, -45);
     }
   }
 

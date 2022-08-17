@@ -5,11 +5,7 @@ export class CommentAndAnswersLink {
   render({ comment }) {
     if (comment.answers().length > 0) {
       return html`
-        <${LinkButton}
-          route="comment"
-          params=${{ id: comment.id }}
-          state=${{ scrollToTop: true }}
-        >
+        <${LinkButton} route="comment" params=${{ id: comment.id }}>
           ${comment.answers().length} answers
         <//>
       `;
