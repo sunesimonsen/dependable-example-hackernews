@@ -1,6 +1,12 @@
-import { Story } from "./models/Story.js";
-import { Comment } from "./models/Comment.js";
-import { topStories, storiesStatus, shown, pageSize } from "./state.js";
+import {
+  topStoryIds,
+  storyById,
+  commentById,
+  storiesStatus,
+  shown,
+  pageSize,
+  clearCache,
+} from "./state.js";
 
 export class Api {
   async fetch(...args) {
@@ -26,7 +32,7 @@ export class Api {
         story.time = response.time;
         story.url = response.url;
         story.descendants = response.descendants;
-        story.comments((response.kids || []).map(Comment.create));
+        story.comments((response.kids || []).map(commentById));
 
         story.status("loaded");
       } catch (e) {
@@ -47,7 +53,7 @@ export class Api {
         comment.time = response.time;
         comment.by = response.by;
         comment.parentId = response.parent;
-        comment.answers((response.kids || []).map(Comment.create));
+        comment.answers((response.kids || []).map(commentById));
 
         comment.status("loaded");
       } catch (e) {
@@ -73,11 +79,11 @@ export class Api {
     if (reload || storiesStatus() === "uninitialized") {
       storiesStatus("loading");
       try {
-        const topStoryIds = await this.fetch(
+        const response = await this.fetch(
           "https://hacker-news.firebaseio.com/v0/topstories.json"
         );
 
-        topStories(topStoryIds.map(Story.create));
+        topStoryIds(response.map(String));
 
         storiesStatus("loaded");
       } catch (e) {
@@ -89,6 +95,7 @@ export class Api {
 
   async reloadTopStories() {
     shown(pageSize);
+    clearCache();
     await this.loadTopStories({ reload: true });
   }
 
