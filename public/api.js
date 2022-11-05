@@ -1,12 +1,6 @@
-import {
-  topStoryIds,
-  storyById,
-  commentById,
-  storiesStatus,
-  shown,
-  pageSize,
-  clearCache,
-} from "./state.js";
+import { topStoryIds, storiesStatus, shown, pageSize } from "./state.js";
+import { storyById, clearStoryCache } from "./models/Story.js";
+import { commentById, clearCommentCache } from "./models/Comment.js";
 
 export class Api {
   async fetch(...args) {
@@ -95,7 +89,9 @@ export class Api {
 
   async reloadTopStories() {
     shown(pageSize);
-    clearCache();
+    clearStoryCache();
+    clearCommentCache();
+
     await this.loadTopStories({ reload: true });
   }
 

@@ -2,7 +2,8 @@ import { html } from "@dependable/view";
 import { css } from "stylewars";
 import { Story } from "./Story.js";
 import { LoadMore } from "./LoadMore.js";
-import { shownTopStoryIds, storyById } from "../state.js";
+import { shownTopStoryIds } from "../state.js";
+import { storyById } from "../models/Story.js";
 import { params } from "@dependable/nano-router";
 
 const containerStyles = css`
