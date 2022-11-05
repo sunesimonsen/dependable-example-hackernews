@@ -3,7 +3,7 @@ import { Stories } from "./Stories.js";
 import { DefaultLayout } from "./DefaultLayout.js";
 import { CommentAndAnswers } from "./CommentAndAnswers.js";
 import { route, params } from "@dependable/nano-router";
-import { Comment } from "../models/Comment.js";
+import { commentById } from "../state.js";
 
 export class RootView {
   render() {
@@ -13,7 +13,7 @@ export class RootView {
 
         return html`
           <${DefaultLayout}>
-            <${CommentAndAnswers} comment=${Comment.create(id)} />
+            <${CommentAndAnswers} comment=${commentById(id)} />
           <//>
         `;
       default:

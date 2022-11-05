@@ -2,7 +2,7 @@ import { html } from "@dependable/view";
 import { css } from "stylewars";
 import { Story } from "./Story.js";
 import { LoadMore } from "./LoadMore.js";
-import { stories } from "../state.js";
+import { shownTopStoryIds, storyById } from "../state.js";
 import { params } from "@dependable/nano-router";
 
 const containerStyles = css`
@@ -29,17 +29,22 @@ export class Stories {
   }
 
   render() {
+    const topStories = shownTopStoryIds().map((id) => {
+      const story = storyById(id);
+
+      return html`
+        <${Story}
+          key=${story}
+          story=${story}
+          isExpanded=${params().id === id}
+        />
+      `;
+    });
+
     return html`
       <div className=${containerStyles}>
         <ol className=${listStyles}>
-          ${stories().map(
-            (story) =>
-              html`<${Story}
-                key=${story}
-                story=${story}
-                isExpanded=${params().id === story.id}
-              />`
-          )}
+          ${topStories}
         </ol>
         <${LoadMore} />
       </div>

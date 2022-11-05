@@ -36,9 +36,7 @@ export class Story {
 
     return html`
       <${StoryCard} ref=${this.setRef}>
-        <${StoryTitle}>
-          <${StoryLink} story=${story} />
-        <//>
+        <${StoryTitle}><${StoryLink} story=${story} /><//>
         <${StoryByline} story=${story} showCommentLink=${!isExpanded} />
         ${isExpanded && html`<${Details} story=${story} />`}
       <//>

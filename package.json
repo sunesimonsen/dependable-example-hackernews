@@ -21,9 +21,9 @@
     "unexpected-dependable": "^1.1.0"
   },
   "dependencies": {
-    "@dependable/nano-router": "^0.3.0",
-    "@dependable/state": "^0.12.0",
-    "@dependable/view": "^0.9.0",
+    "@dependable/nano-router": "^0.6.0",
+    "@dependable/state": "^0.17.0",
+    "@dependable/view": "^0.13.0",
     "@nano-router/history": "^2.11.0",
     "@nano-router/router": "^2.11.0",
     "stylewars": "^2.1.0"
