@@ -5,7 +5,10 @@ import { Comment } from "./models/Comment.js";
 
 export const pageSize = 20;
 export const shown = observable(pageSize);
-export const storiesStatus = observable("uninitialized");
+export const storiesStatus = observable("uninitialized", {
+  id: "storiesStatus",
+});
+
 export const topStories = observable([], { id: "topStories" });
 export const stories = computed(() => topStories().slice(0, shown()));
 
