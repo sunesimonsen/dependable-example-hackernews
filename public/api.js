@@ -1,6 +1,5 @@
 import { topStoryIds, storiesStatus, shown, pageSize } from "./state.js";
-import { storyById, clearStoryCache } from "./models/Story.js";
-import { commentById, clearCommentCache } from "./models/Comment.js";
+import { storyById, storyCache, commentById, commentCache } from "./state.js";
 
 export class Api {
   async fetch(...args) {
