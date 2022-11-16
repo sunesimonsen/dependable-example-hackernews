@@ -17,16 +17,20 @@ export class EntityCache {
 
     if (!accessor) {
       const newAccessor = computed(() => this.cache()[id]);
-
-      const entity = this.model.create(id);
-      this.cache({
-        ...this.cache(),
-        [id]: entity,
-      });
-
       this.accessors[id] = newAccessor;
 
-      return entity;
+      const currentCache = this.cache();
+
+      if (id in currentCache) {
+        return currentCache[id];
+      } else {
+        const entity = this.model.create(id);
+        this.cache({
+          ...currentCache,
+          [id]: entity,
+        });
+        return entity;
+      }
     }
 
     return accessor();
