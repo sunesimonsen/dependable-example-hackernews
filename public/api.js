@@ -68,8 +68,8 @@ export class Api {
     }
   }
 
-  async loadTopStories({ reload = false } = {}) {
-    if (reload || storiesStatus() === "uninitialized") {
+  async loadTopStories() {
+    if (storiesStatus() === "uninitialized") {
       storiesStatus("loading");
       try {
         const response = await this.fetch(
@@ -88,10 +88,11 @@ export class Api {
 
   async reloadTopStories() {
     shown(pageSize);
-    clearStoryCache();
-    clearCommentCache();
+    storiesStatus("uninitialized");
+    storyCache.clear();
+    commentCache.clear();
 
-    await this.loadTopStories({ reload: true });
+    await this.loadTopStories();
   }
 
   loadMoreStories() {
