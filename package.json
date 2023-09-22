@@ -21,11 +21,11 @@
     "unexpected-dependable": "^1.1.0"
   },
   "dependencies": {
-    "@dependable/cache": "^0.4.0",
-    "@dependable/nano-router": "^0.7.0",
+    "@dependable/cache": "^0.6.0",
+    "@dependable/nano-router": "^0.8.0",
     "@dependable/session": "^0.12.0",
     "@dependable/state": "^0.19.0",
-    "@dependable/view": "^0.16.0",
+    "@dependable/view": "^0.17.0",
     "@nano-router/history": "^2.11.0",
     "@nano-router/router": "^2.11.0",
     "stylewars": "^2.1.0"
