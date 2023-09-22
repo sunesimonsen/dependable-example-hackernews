@@ -4,6 +4,8 @@ import { Skeleton } from "./Skeleton.js";
 import { Html } from "./Html.js";
 import { formatRelativeHours } from "../utils/time.js";
 import { CommentAndAnswersLink } from "./CommentAndAnswersLink.js";
+import { LOADED } from "@dependable/cache"
+import { comments } from '../state.js'
 
 const styles = css`
   & {
@@ -38,10 +40,14 @@ const bylineStyles = css`
 `;
 
 export class Comment {
-  render({ comment, showAnswersLink }) {
-    this.context.api.loadComment(comment);
+  didRender() {
+    this.context.api.loadComment(this.props.id);
+  }
 
-    if (comment.status() !== "loaded") {
+  render({ id, showAnswersLink }) {
+    const [comment, status] = comments.byId(id)
+
+    if (status !== LOADED) {
       return html`
         <li className=${styles}>
           <div><${Skeleton} /></div>

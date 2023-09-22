@@ -2,8 +2,9 @@ import { html } from "@dependable/view";
 import { css } from "stylewars";
 import { Story } from "./Story.js";
 import { LoadMore } from "./LoadMore.js";
-import { topStories } from "../state.js";
+import { topStoryIds } from "../state.js";
 import { params } from "@dependable/nano-router";
+import { LOADED } from "@dependable/cache"
 
 const containerStyles = css`
   & {
@@ -29,13 +30,17 @@ export class Stories {
   }
 
   renderItems() {
-    return topStories().map(
-      (story) =>
+    const [ids, status] = topStoryIds()
+
+    if (status !== LOADED) return null
+
+    return ids.map(
+      (id) =>
         html`
           <${Story}
-            key=${story}
-            story=${story}
-            isExpanded=${params().id === story.id}
+            key=${id}
+            id=${id}
+            isExpanded=${params().id === id}
           />
         `
     );

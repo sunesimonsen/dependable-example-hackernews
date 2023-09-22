@@ -1,7 +1,8 @@
 import { html } from "@dependable/view";
 import { css } from "stylewars";
 import { ReloadIcon } from "./icons.js";
-import { storiesStatus } from "../state.js";
+import { searches } from "../state.js";
+import { LOADED } from "@dependable/cache"
 
 const reloadStyles = css`
   & {
@@ -31,7 +32,6 @@ const reloadStyles = css`
 const loadingStyles = css`
   @keyframes spin {
     100% {
-      rotate(360deg);
       transform: rotate(360deg);
     }
   }
@@ -50,6 +50,9 @@ export class ReloadButton {
   }
 
   render() {
+    const [_, status] = searches.byId('top-stories')
+    console.log(status);
+
     return html`
       <button
         onClick=${this.onReload}
@@ -57,7 +60,7 @@ export class ReloadButton {
         title="refresh"
       >
         <${ReloadIcon}
-          className=${storiesStatus() !== "loaded" && loadingStyles}
+          className=${status !== LOADED && loadingStyles}
         />
       </button>
     `;

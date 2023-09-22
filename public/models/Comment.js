@@ -4,7 +4,6 @@ export class Comment {
   static create(id) {
     return {
       id,
-      status: observable("uninitialized"),
       answers: observable([]),
     };
   }

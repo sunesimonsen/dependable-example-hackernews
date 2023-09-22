@@ -1,5 +1,7 @@
-import { topStoryIds, storiesStatus, shown, pageSize } from "./state.js";
-import { storyById, storyCache, commentById, commentCache } from "./state.js";
+import { searches, stories, comments, shown, pageSize } from "./state.js";
+import { UNINITIALIZED } from '@dependable/cache'
+import { Story } from './models/Story.js'
+import { Comment } from './models/Comment.js'
 
 export class Api {
   async fetch(...args) {
@@ -12,85 +14,65 @@ export class Api {
     return this.fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`);
   }
 
-  async loadStory(story) {
-    if (story.status() === "uninitialized") {
-      story.status("loading");
+  async loadStory(id) {
+    return stories.initialize(id, async () => {
+      const response = await this.loadItem(id);
 
-      try {
-        const response = await this.loadItem(story.id);
+      const story = Story.create(id)
+      story.title = response.title;
+      story.score = response.score;
+      story.by = response.by;
+      story.time = response.time;
+      story.url = response.url;
+      story.descendants = response.descendants;
+      story.comments((response.kids || []));
 
-        story.title = response.title;
-        story.score = response.score;
-        story.by = response.by;
-        story.time = response.time;
-        story.url = response.url;
-        story.descendants = response.descendants;
-        story.comments((response.kids || []).map(commentById));
-
-        story.status("loaded");
-      } catch (e) {
-        console.error(e);
-        story.status("failed");
-      }
-    }
+      return story
+    })
   }
 
-  async loadComment(comment) {
-    if (comment.status() === "uninitialized") {
-      comment.status("loading");
+  async loadComment(id) {
+    return comments.initialize(id, async () => {
+      const response = await this.loadItem(id);
 
-      try {
-        const response = await this.loadItem(comment.id);
+      const comment = Comment.create(id)
+      comment.text = response.text;
+      comment.time = response.time;
+      comment.by = response.by;
+      comment.parentId = response.parent;
+      comment.answers((response.kids || []));
 
-        comment.text = response.text;
-        comment.time = response.time;
-        comment.by = response.by;
-        comment.parentId = response.parent;
-        comment.answers((response.kids || []).map(commentById));
-
-        comment.status("loaded");
-      } catch (e) {
-        console.error(e);
-        comment.status("failed");
-      }
-    }
+      return comment
+    })
   }
 
   async loadCommentAnswers(comment) {
-    for (const answer of comment.answers()) {
-      this.loadComment(answer);
+    for (const id of comment.answers()) {
+      this.loadComment(id);
     }
   }
 
   async loadStoryComments(story) {
-    for (const comment of story.comments()) {
-      this.loadComment(comment);
+    for (const id of story.comments()) {
+      this.loadComment(id);
     }
   }
 
   async loadTopStories() {
-    if (storiesStatus() === "uninitialized") {
-      storiesStatus("loading");
-      try {
-        const response = await this.fetch(
-          "https://hacker-news.firebaseio.com/v0/topstories.json"
-        );
+    searches.initialize('top-stories', async () => {
+      const response = await this.fetch(
+        "https://hacker-news.firebaseio.com/v0/topstories.json"
+      );
 
-        topStoryIds(response.map(String));
-
-        storiesStatus("loaded");
-      } catch (e) {
-        console.error(e);
-        storiesStatus("failed");
-      }
-    }
+      return response.map(String)
+    })
   }
 
   async reloadTopStories() {
     shown(pageSize);
-    storiesStatus("uninitialized");
-    storyCache.clear();
-    commentCache.clear();
+    searches.clear();
+    stories.clear();
+    comments.clear();
 
     await this.loadTopStories();
   }

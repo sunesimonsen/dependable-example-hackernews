@@ -4,6 +4,8 @@ import { StoryByline } from "./StoryByline.js";
 import { Details } from "./Details.js";
 import { StoryCard, StoryTitle, StoryPlaceholder } from "./StoryLayout.js";
 import { StoryLink } from "./StoryLink.js";
+import { stories } from "../state.js"
+import { LOADED } from "@dependable/cache"
 
 export class Story {
   constructor() {
@@ -19,18 +21,15 @@ export class Story {
     }
   }
 
-  didMount() {
+  didRender() {
     this.scrollIntoViewIfNecessary();
+    this.context.api.loadStory(this.props.id);
   }
 
-  didUpdate() {
-    this.scrollIntoViewIfNecessary();
-  }
+  render({ id, isExpanded }) {
+    const [story, status] = stories.byId(id)
 
-  render({ story, isExpanded }) {
-    this.context.api.loadStory(story);
-
-    if (story.status() !== "loaded") {
+    if (status !== LOADED) {
       return html`<${StoryPlaceholder} />`;
     }
 

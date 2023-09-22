@@ -4,7 +4,6 @@ export class Story {
   static create(id) {
     return {
       id,
-      status: observable("uninitialized"),
       comments: observable([]),
     };
   }

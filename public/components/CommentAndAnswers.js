@@ -3,6 +3,7 @@ import { css } from "stylewars";
 import { Comment } from "./Comment.js";
 import { Answers } from "./Answers.js";
 import { BackButton } from "./BackButton.js";
+import { comments } from "../state.js";
 
 const containerStyles = css`
   & {
@@ -29,13 +30,13 @@ const answerStyles = css`
 `;
 
 export class CommentAndAnswers {
-  render({ comment }) {
+  render({ id }) {
     return html`
       <div className=${containerStyles}>
         <div className=${itemStyles}>
-          <${Comment} comment=${comment} />
+          <${Comment} id=${id} />
           <div className=${answerStyles}>
-            <${Answers} comment=${comment} />
+            <${Answers} commentId=${id} />
           </div>
           <${BackButton} />
         </div>
