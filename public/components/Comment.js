@@ -4,8 +4,8 @@ import { Skeleton } from "./Skeleton.js";
 import { Html } from "./Html.js";
 import { formatRelativeHours } from "../utils/time.js";
 import { CommentAndAnswersLink } from "./CommentAndAnswersLink.js";
-import { LOADED } from "@dependable/cache"
-import { comments } from '../state.js'
+import { LOADED } from "@dependable/cache";
+import { comments } from "../state.js";
 
 const styles = css`
   & {
@@ -45,7 +45,7 @@ export class Comment {
   }
 
   render({ id, showAnswersLink }) {
-    const [comment, status] = comments.byId(id)
+    const [comment, status] = comments.byId(id);
 
     if (status !== LOADED) {
       return html`

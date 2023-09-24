@@ -1,5 +1,4 @@
 import { html } from "@dependable/view";
-import { params } from "@dependable/nano-router";
 import { css } from "stylewars";
 
 const styles = css`

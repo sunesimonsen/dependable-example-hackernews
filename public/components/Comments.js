@@ -13,9 +13,7 @@ export class Comments {
   render({ story }) {
     const comments = story
       .comments()
-      .map(
-        (id) => html`<${Comment} showAnswersLink id=${id} />`
-      );
+      .map((id) => html`<${Comment} showAnswersLink id=${id} />`);
 
     return html`
       <ul className=${styles}>

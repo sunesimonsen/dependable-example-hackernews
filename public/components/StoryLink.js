@@ -1,6 +1,5 @@
 import { html } from "@dependable/view";
 import { css } from "stylewars";
-import { routes } from "../routes.js";
 
 const styles = css`
   & {

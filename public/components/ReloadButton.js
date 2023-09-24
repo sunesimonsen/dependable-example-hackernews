@@ -2,7 +2,7 @@ import { html } from "@dependable/view";
 import { css } from "stylewars";
 import { ReloadIcon } from "./icons.js";
 import { searches } from "../state.js";
-import { LOADED } from "@dependable/cache"
+import { LOADED } from "@dependable/cache";
 
 const reloadStyles = css`
   & {
@@ -50,8 +50,7 @@ export class ReloadButton {
   }
 
   render() {
-    const [_, status] = searches.byId('top-stories')
-    console.log(status);
+    const [, status] = searches.byId("top-stories");
 
     return html`
       <button
@@ -59,9 +58,7 @@ export class ReloadButton {
         className=${reloadStyles}
         title="refresh"
       >
-        <${ReloadIcon}
-          className=${status !== LOADED && loadingStyles}
-        />
+        <${ReloadIcon} className=${status !== LOADED && loadingStyles} />
       </button>
     `;
   }

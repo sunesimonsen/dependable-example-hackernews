@@ -1,11 +1,10 @@
 import { html } from "@dependable/view";
-import { css } from "stylewars";
 import { StoryByline } from "./StoryByline.js";
 import { Details } from "./Details.js";
 import { StoryCard, StoryTitle, StoryPlaceholder } from "./StoryLayout.js";
 import { StoryLink } from "./StoryLink.js";
-import { stories } from "../state.js"
-import { LOADED } from "@dependable/cache"
+import { stories } from "../state.js";
+import { LOADED } from "@dependable/cache";
 
 export class Story {
   constructor() {
@@ -27,7 +26,7 @@ export class Story {
   }
 
   render({ id, isExpanded }) {
-    const [story, status] = stories.byId(id)
+    const [story, status] = stories.byId(id);
 
     if (status !== LOADED) {
       return html`<${StoryPlaceholder} />`;

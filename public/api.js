@@ -1,7 +1,6 @@
 import { searches, stories, comments, shown, pageSize } from "./state.js";
-import { UNINITIALIZED } from '@dependable/cache'
-import { Story } from './models/Story.js'
-import { Comment } from './models/Comment.js'
+import { Story } from "./models/Story.js";
+import { Comment } from "./models/Comment.js";
 
 export class Api {
   async fetch(...args) {
@@ -18,32 +17,32 @@ export class Api {
     return stories.initialize(id, async () => {
       const response = await this.loadItem(id);
 
-      const story = Story.create(id)
+      const story = Story.create(id);
       story.title = response.title;
       story.score = response.score;
       story.by = response.by;
       story.time = response.time;
       story.url = response.url;
       story.descendants = response.descendants;
-      story.comments((response.kids || []));
+      story.comments(response.kids || []);
 
-      return story
-    })
+      return story;
+    });
   }
 
   async loadComment(id) {
     return comments.initialize(id, async () => {
       const response = await this.loadItem(id);
 
-      const comment = Comment.create(id)
+      const comment = Comment.create(id);
       comment.text = response.text;
       comment.time = response.time;
       comment.by = response.by;
       comment.parentId = response.parent;
-      comment.answers((response.kids || []));
+      comment.answers(response.kids || []);
 
-      return comment
-    })
+      return comment;
+    });
   }
 
   async loadCommentAnswers(comment) {
@@ -59,13 +58,13 @@ export class Api {
   }
 
   async loadTopStories() {
-    searches.initialize('top-stories', async () => {
+    searches.initialize("top-stories", async () => {
       const response = await this.fetch(
-        "https://hacker-news.firebaseio.com/v0/topstories.json"
+        "https://hacker-news.firebaseio.com/v0/topstories.json",
       );
 
-      return response.map(String)
-    })
+      return response.map(String);
+    });
   }
 
   async reloadTopStories() {

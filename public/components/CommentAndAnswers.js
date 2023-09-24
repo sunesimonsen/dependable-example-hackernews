@@ -3,7 +3,6 @@ import { css } from "stylewars";
 import { Comment } from "./Comment.js";
 import { Answers } from "./Answers.js";
 import { BackButton } from "./BackButton.js";
-import { comments } from "../state.js";
 
 const containerStyles = css`
   & {

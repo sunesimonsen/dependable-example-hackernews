@@ -1,7 +1,7 @@
 import { html } from "@dependable/view";
 import { css } from "stylewars";
 import { Comment } from "./Comment.js";
-import { LOADED } from "@dependable/cache"
+import { LOADED } from "@dependable/cache";
 import { comments } from "../state.js";
 
 const styles = css`
@@ -13,15 +13,13 @@ const styles = css`
 
 export class Answers {
   render({ commentId }) {
-    const [comment, status] = comments.byId(commentId)
+    const [comment, status] = comments.byId(commentId);
 
     if (status !== LOADED) return null;
 
     const answers = comment
       .answers()
-      .map(
-        (answer) => html` <${Comment} showAnswersLink id=${answer} /> `
-      );
+      .map((answer) => html` <${Comment} showAnswersLink id=${answer} /> `);
 
     return html`
       <ul className=${styles}>

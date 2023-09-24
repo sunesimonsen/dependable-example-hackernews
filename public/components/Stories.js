@@ -4,7 +4,7 @@ import { Story } from "./Story.js";
 import { LoadMore } from "./LoadMore.js";
 import { topStoryIds } from "../state.js";
 import { params } from "@dependable/nano-router";
-import { LOADED } from "@dependable/cache"
+import { LOADED } from "@dependable/cache";
 
 const containerStyles = css`
   & {
@@ -30,19 +30,14 @@ export class Stories {
   }
 
   renderItems() {
-    const [ids, status] = topStoryIds()
+    const [ids, status] = topStoryIds();
 
-    if (status !== LOADED) return null
+    if (status !== LOADED) return null;
 
     return ids.map(
-      (id) =>
-        html`
-          <${Story}
-            key=${id}
-            id=${id}
-            isExpanded=${params().id === id}
-          />
-        `
+      (id) => html`
+        <${Story} key=${id} id=${id} isExpanded=${params().id === id} />
+      `,
     );
   }
 

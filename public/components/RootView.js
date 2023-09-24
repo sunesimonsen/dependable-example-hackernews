@@ -8,11 +8,9 @@ export class RootView {
   render() {
     switch (route()) {
       case "comment":
-        const { id } = params();
-
         return html`
           <${DefaultLayout}>
-            <${CommentAndAnswers} id=${id} />
+            <${CommentAndAnswers} id=${params().id} />
           <//>
         `;
       default:

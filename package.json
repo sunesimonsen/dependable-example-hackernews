@@ -9,14 +9,22 @@
   "scripts": {
     "start": "relivestyle --single --port 5000 public",
     "build": "rm -rf dist && rollup -c node:@dependable/rollup-config",
+    "format": "prettier --write '**/*.{js,mjs,md,json}'",
+    "lint": "eslint '**/*.{js,mjs}' && prettier --check '**/*.{js,mjs,md,json}'",
     "deploy": "npm run build && surge dist dependable-example-hackernews.surge.sh",
     "test": "mocha"
   },
   "devDependencies": {
     "@dependable/rollup-config": "^0.4.0",
+    "fake-promise": "^2.5.44",
     "mocha": "^10.0.0",
+    "prettier": "^3.0.3",
     "relivestyle": "^1.0.0-11",
     "surge": "^0.23.1",
+    "eslint": "^8.30.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-mocha": "^10.1.0",
     "unexpected": "^13.0.0",
     "unexpected-dependable": "^1.1.0"
   },
