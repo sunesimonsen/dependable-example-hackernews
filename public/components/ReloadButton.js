@@ -1,5 +1,5 @@
 import { html } from "@dependable/view";
-import { css } from "stylewars";
+import { css, classes } from "stylewars";
 import { ReloadIcon } from "./icons.js";
 import { searches } from "../state.js";
 import { LOADED } from "@dependable/cache";
@@ -20,12 +20,27 @@ const reloadStyles = css`
     padding: 10px;
   }
 
+  @media only screen and (width <= 1000px) {
+    & {
+      visibility: hidden;
+    }
+  }
+
   &:hover {
     background: rgb(222 90 2);
   }
 
   &:active {
     background: rgb(195 78 0);
+  }
+`;
+
+const iconStyles = css`
+  @media only screen and (width <= 1000px) {
+    & {
+      height: 3em;
+      width: 3em;
+    }
   }
 `;
 
@@ -58,7 +73,9 @@ export class ReloadButton {
         className=${reloadStyles}
         title="refresh"
       >
-        <${ReloadIcon} className=${status !== LOADED && loadingStyles} />
+        <${ReloadIcon}
+          className=${classes(iconStyles, status !== LOADED && loadingStyles)}
+        />
       </button>
     `;
   }

@@ -11,6 +11,13 @@ const containerStyles = css`
     box-sizing: border-box;
     max-width: 800px;
   }
+
+  @media only screen and (width <= 1000px) {
+    & {
+      width: 95vw;
+      max-width: inherit;
+    }
+  }
 `;
 
 const itemStyles = css`

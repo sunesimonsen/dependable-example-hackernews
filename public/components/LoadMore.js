@@ -7,6 +7,11 @@ const buttonsStyles = css`
     margin-top: 20px;
     text-align: center;
   }
+  @media only screen and (width <= 1000px) {
+    & {
+      margin-top: 40px;
+    }
+  }
 `;
 
 const loadMoreStyles = css`
@@ -16,9 +21,17 @@ const loadMoreStyles = css`
     color: #666;
     outline: none;
   }
+
+  @media only screen and (width <= 1000px) {
+    & {
+      font-size: xx-large;
+    }
+  }
+
   &:focus-visible {
     outline: blue auto 1px;
   }
+
   &:hover {
     color: black;
     cursor: pointer;

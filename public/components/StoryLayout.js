@@ -8,7 +8,7 @@ const itemStyles = css`
     line-height: 24px;
     list-style-type: none;
     background: white;
-    padding: 20px;
+    padding: 1.4em;
     border-radius: 4px;
     overflow: hidden;
   }
@@ -17,14 +17,22 @@ const itemStyles = css`
 const titleStyles = css`
   & {
     display: block;
-    font-size: 1.5em;
-    line-height: 1.5em;
+    font-size: 1.4em;
+    line-height: 1.4em;
     color: black;
     text-decoration: none;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    margin-bottom: 8px;
+    margin-bottom: 0.4em;
+  }
+
+  @media only screen and (width <= 1000px) {
+    & {
+      font-size: 1.6em;
+      line-height: 1.2em;
+      margin-bottom: 0.8em;
+    }
   }
 `;
 

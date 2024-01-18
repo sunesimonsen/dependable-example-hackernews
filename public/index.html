@@ -1,43 +1,54 @@
 <!doctype html>
 <html>
-    <head>
-      <base href="/">
-      <title>Hacker News</title>
-      <link rel="icon" href="./favicon.ico" type="image/x-icon">
-      <script type="module" src="./index.js"></script>
-      <style>
-        html,
-        body {
-          margin: 0;
-          padding: 0;
-        }
+  <head>
+    <base href="/" />
+    <title>Hacker News</title>
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+    <script type="module" src="./index.js"></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
 
+      body {
+        font-family: Verdana, Geneva, sans-serif;
+        background: #ecece3;
+      }
+
+
+      header {
+        display: flex;
+        align-items: center;
+        background: rgb(255, 102, 0);
+        color: white;
+        height: 2.2em;
+        position: sticky;
+        top: 0px;
+        z-index: 1;
+      }
+
+      .content {
+        padding: 20px 0;
+      }
+
+      @media only screen and (width <= 1000px) {
         body {
-          font-family: Verdana, Geneva, sans-serif;
-          background: #ecece3;
+          font-size: x-large;
         }
 
         header {
-          display: flex;
-          align-items: center;
-          background: rgb(255, 102, 0);
-          color: white;
-          height: 38px;
-          position: sticky;
-          top: 0px;
-          z-index: 1;
+          font-size: xx-large;
         }
+      }
+    </style>
+  </head>
 
-        .content {
-          padding: 20px 0;
-        }
-      </style>
-    </head>
-
-    <body>
-      <main>
-        <header class="topBar"></header>
-        <section class="content"></section>
-      </main>
-    </body>
+  <body>
+    <main>
+      <header class="topBar"></header>
+      <section class="content"></section>
+    </main>
+  </body>
 </html>

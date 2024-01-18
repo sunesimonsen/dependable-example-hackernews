@@ -13,14 +13,27 @@ const containerStyles = css`
     box-sizing: border-box;
     max-width: 800px;
   }
+
+  @media only screen and (width <= 1000px) {
+    & {
+      width: 95vw;
+      max-width: inherit;
+    }
+  }
 `;
 
 const listStyles = css`
   & {
     display: grid;
-    grid-gap: 8px;
+    grid-gap: 0.4em;
     padding: 0;
     margin: 0;
+  }
+
+  @media only screen and (width <= 1000px) {
+    & {
+      grid-gap: 0.8em;
+    }
   }
 `;
 

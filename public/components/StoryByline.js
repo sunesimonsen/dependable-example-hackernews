@@ -10,6 +10,12 @@ const styles = css`
     gap: 20px;
     color: grey;
   }
+
+  @media only screen and (width <= 1000px) {
+    & {
+      font-size: larger;
+    }
+  }
 `;
 
 export class StoryByline {

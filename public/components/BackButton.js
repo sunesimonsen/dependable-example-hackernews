@@ -14,6 +14,12 @@ const styles = css`
     background: none;
   }
 
+  @media only screen and (width <= 1000px) {
+    & {
+      visibility: hidden;
+    }
+  }
+
   &:hover {
     color: black;
   }

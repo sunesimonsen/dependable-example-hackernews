@@ -7,8 +7,13 @@ const logo = new URL("../images/y18.gif", import.meta.url);
 const logoStyles = css`
   & {
     border: thin solid white;
-    width: 20px;
-    height: 20px;
+  }
+
+  @media only screen and (width <= 1000px) {
+    & {
+      height: 1em;
+      width: 1em;
+    }
   }
 `;
 
