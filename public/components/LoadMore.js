@@ -1,4 +1,4 @@
-import { html } from "@dependable/view";
+import { html } from "@dependable/htm";
 import { isLoadMoreVisible } from "../state.js";
 import { css } from "stylewars";
 

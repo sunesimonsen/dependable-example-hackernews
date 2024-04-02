@@ -1,4 +1,4 @@
-import { html } from "@dependable/view";
+import { html } from "@dependable/htm";
 import { Stories } from "./Stories.js";
 import { DefaultLayout } from "./DefaultLayout.js";
 import { CommentAndAnswers } from "./CommentAndAnswers.js";

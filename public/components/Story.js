@@ -1,4 +1,4 @@
-import { html } from "@dependable/view";
+import { html } from "@dependable/htm";
 import { StoryByline } from "./StoryByline.js";
 import { Details } from "./Details.js";
 import { StoryCard, StoryTitle, StoryPlaceholder } from "./StoryLayout.js";

@@ -1,4 +1,4 @@
-import { html } from "@dependable/view";
+import { html } from "@dependable/htm";
 import { css } from "stylewars";
 import { formatRelativeHours } from "../utils/time.js";
 import { CommentsLink } from "./CommentsLink.js";

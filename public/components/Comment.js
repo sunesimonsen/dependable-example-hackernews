@@ -1,4 +1,4 @@
-import { html } from "@dependable/view";
+import { html } from "@dependable/htm";
 import { css } from "stylewars";
 import { Skeleton } from "./Skeleton.js";
 import { Html } from "./Html.js";

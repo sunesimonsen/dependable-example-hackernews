@@ -1,4 +1,4 @@
-import { html } from "@dependable/view";
+import { html } from "@dependable/htm";
 import { LinkButton } from "./LinkButton.js";
 
 export class CommentsLink {
