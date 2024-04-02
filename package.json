@@ -26,6 +26,7 @@
     "surge": "^0.23.1",
     "unexpected": "^13.0.0",
     "unexpected-dependable": "^1.1.0",
+    "@dependable/vite": "^0.1.0",
     "vite": "^5.0.10"
   },
   "dependencies": {
@@ -34,7 +35,6 @@
     "@dependable/htm": "^0.2.0",
     "@dependable/state": "^0.19.0",
     "@dependable/view": "^0.17.0",
-    "@dependable/vite": "^0.1.0",
     "@nano-router/history": "^2.11.0",
     "@nano-router/router": "^2.11.0",
     "stylewars": "^2.4.0"
